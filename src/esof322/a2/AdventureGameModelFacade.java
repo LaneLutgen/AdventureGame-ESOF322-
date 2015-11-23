@@ -1,6 +1,5 @@
 package esof322.a2;
 
-//group members: Austin Baune, Lane Lutgen, John Waters, William Paddock 
 //This class impliments all the functionality of the game. We added various methods to allow the user to drop items, pick them up, and change the Log view.
 //There is also conditional checking to ensure the program runs correctly
 
@@ -13,7 +12,7 @@ public class AdventureGameModelFacade {
  //
  // These methods and fields are left as exercises.
   private  Player thePlayer = new Player();
-   private Adventure theCave = new Adventure();
+   private LevelZero theCave = new LevelZero();
    
   public boolean itemPresentInRoom = false;
   AdventureGameModelFacade() { // we initialize

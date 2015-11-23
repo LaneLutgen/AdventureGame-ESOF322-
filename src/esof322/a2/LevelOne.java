@@ -1,70 +1,12 @@
 package esof322.a2;
 
-//group members: Austin Baune, Lane Lutgen, John Waters, William Paddock 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
-
-
-/**  Adventure Game  Program Code
-     Copyright (c) 1999 James M. Bieman
-
-     To compile: javac AdventureGame.java
-     To run:     java AdventureGame
-
-     The main routine is AdventureGame.main
-                
-**/
-
-/**  Adventure Game  Program Code
-Copyright (c) 1999-2012 James M. Bieman
-The Adventure game is based on the "Colossal Cave Adventure" originally
-designed by Will Crowther and implemented by Will Crowther
-and Don Wood in Fortran in 1975 and 1976.
-
-This micro-version is a variant of the original cave system and is implemented in Java
-with just a few rooms and with a much more limited vocabulary.
-
-Updated August 2010, January 2012
-- Code is put into package cs314.a2 to match current CS314 coding standards.
-Updated January 2012
-- Renamed as the "Adventure Game"
-
-To compile: javac cs314.a2.AdventureGame.java
-To run:     java cs314.a2.AdventureGame
-
-The main routine is AdventureGame.main
-			    
-			    **/
-
-/** class Adventure: Primary method, createCave, creates the cave system.
-        It eventually be replaced with a more flexible mechanism
-        to support input and output from devices other than
-        an ASCII terminal.
-
-		Room descriptions are followed by a room identifier,
-		to ease debugging and testing.  These would be removed
-		to help confuse the user, which is our ultimate aim.
-
-		I haven't added all of the room descriptions.  They
-		will be done later.
-		
-		In this version all I/O is through standard I/O;
-		I/O is to and from the console. 
-
-*/
-
-/*Changes we made to the overall program were to take the txt based interface and give it an GUI. We created buttons for the user to interact
-with and provide feedback based on what they are carrying, what is happening to them (i.e. running into a wall or unlocking a door), and asking 
-the user what action they would like to perform. We made slight changes to the Door, Player, and wall classes. These changes were simply adding 
-a way for the GUI to update the Log View. The GUI is implimented in the AdventureGameView without making any game functions. All game functionality 
-takes place in the GameModelFacade. 
-*/
-
-public class Adventure {
+public class LevelOne {
 
   private Room entrance;
   

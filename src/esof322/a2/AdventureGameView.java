@@ -1,5 +1,5 @@
 package esof322.a2;
-//group members: Austin Baune, Lane Lutgen, John Waters, William Paddock 
+
 //This class impliments the GUI. There is no game functionality within other than a visual representation of what is happening for the user. We added 
 //some buttons and labels for the user's benefit
 import javax.swing.*;

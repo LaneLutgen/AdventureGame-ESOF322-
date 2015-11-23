@@ -1,5 +1,5 @@
 package esof322.a2;
-//group members: Austin Baune, Lane Lutgen, John Waters, William Paddock 
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates

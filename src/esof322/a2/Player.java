@@ -1,5 +1,5 @@
 package esof322.a2;
-//group members: Austin Baune, Lane Lutgen, John Waters, William Paddock 
+
 //added set and get methods to accomodate the Log view for the player
 
 /**  Adventure Game  Program Code

@@ -1,6 +1,4 @@
 package esof322.a2;
-//group members: Austin Baune, Lane Lutgen, John Waters, William Paddock 
-//no changes made to this class
 
 /**  Adventure Game  Program Code
      Copyright (c) 1999 James M. Bieman
@@ -134,7 +132,7 @@ public class AdventureGame {
 
   public void startQuest() throws IOException{
    Player thePlayer = new Player();
-   Adventure theCave = new Adventure();
+   LevelZero theCave = new LevelZero();
    Room startRm = theCave.createAdventure();
    thePlayer.setRoom(startRm);
 
