@@ -19,18 +19,26 @@ public class AdventureGameModelFacade {
 	private boolean dropButtonPressed = false;
 
 	public boolean itemPresentInRoom = false;
-	
-	public void newGame(){
-		
+
+	public AdventureGameModelFacade() {
+		setLog("Welcome to the adventure game! Click on New Game to begin!");
 	}
 
-	public void saveGame(){
-		
+	public void newGame() {
+		setLog("To play Level 1, click on the 1 button! \n" + "To play Level 2, click on the 2 button!");
+		if (gameInProgress) {
+			gameInProgress = false;
+		}
 	}
-	
-	public void loadGame(){
-		
+
+	public void saveGame() {
+
 	}
+
+	public void loadGame() {
+
+	}
+
 	// Calls the methods to send the player in the proper direction
 	public void goUp() {
 		thePlayer.go(4);
@@ -57,12 +65,11 @@ public class AdventureGameModelFacade {
 	}
 
 	public void onePressed() {
-		if(!gameInProgress){
+		if (!gameInProgress) {
 			theCave = LevelFactory.chooseLevel(0);
 			beginGame();
 			gameInProgress = true;
-		}
-		else if (dropButtonPressed) {
+		} else if (dropButtonPressed) {
 			dropItem(1);
 			dropButtonPressed = false;
 		} else {
@@ -71,7 +78,7 @@ public class AdventureGameModelFacade {
 	}
 
 	public void twoPressed() {
-		if(!gameInProgress){
+		if (!gameInProgress) {
 			theCave = LevelFactory.chooseLevel(1);
 			beginGame();
 			gameInProgress = true;
@@ -98,7 +105,11 @@ public class AdventureGameModelFacade {
 	// You need to finish these getView and getItems methods.
 	public String getView() {
 		// returns thePlayer's view of the room
-		return (thePlayer.look());
+		if (!gameInProgress) {
+			return thePlayer.getLogTxt();
+		} else {
+			return (thePlayer.look());
+		}
 	}
 
 	public String getItems() {
@@ -169,7 +180,12 @@ public class AdventureGameModelFacade {
 	public String getLog() {
 
 		// returns the Log view for the player
-		return thePlayer.getLogTxt();
+		if(!gameInProgress){
+			return "";
+		}
+		else{
+			return thePlayer.getLogTxt();
+		}
 	}
 
 	public void setLog(String string) {
@@ -190,7 +206,7 @@ public class AdventureGameModelFacade {
 		return true;
 	}
 
-	private void beginGame(){
+	private void beginGame() {
 		startRm = theCave.createAdventure();
 		thePlayer.setRoom(startRm);
 	}

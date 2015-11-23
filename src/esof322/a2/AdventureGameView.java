@@ -101,6 +101,18 @@ public class AdventureGameView extends GBFrame {
 		else if (buttonObj == twoButton) {
 			model.twoPressed();
 		}
+		
+		else if (buttonObj == newGameButton){
+			model.newGame();
+		}
+		
+		else if (buttonObj == saveGameButton){
+			model.saveGame();
+		}
+		
+		else if (buttonObj == loadGameButton) {
+			model.loadGame();
+		}
 
 		displayCurrentInfo();
                 model.setLog("");//refreshes the log after each time a button is clicked
@@ -112,7 +124,7 @@ public class AdventureGameView extends GBFrame {
           
 		viewArea.setText(model.getView());
 		carryingArea.setText(model.getItems());
-                itemSelectionLog.setText(model.getLog());
+        itemSelectionLog.setText(model.getLog());
 	}
    
 	public static void main(String[] args) {
