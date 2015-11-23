@@ -6,7 +6,7 @@ package esof322.a2;
  * and open the template in the editor.
  */
 
-public class LevelOne {
+public class LevelOne implements ILevel{
 
   private Room entrance;
   

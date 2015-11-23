@@ -64,7 +64,7 @@ a way for the GUI to update the Log View. The GUI is implimented in the Adventur
 takes place in the GameModelFacade. 
 */
 
-public class LevelZero {
+public class LevelZero implements ILevel{
 
   private Room entrance;
   

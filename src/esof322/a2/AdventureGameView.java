@@ -38,8 +38,10 @@ public class AdventureGameView extends GBFrame {
 
 	private JButton oneButton = addButton("1", 4, 5, 1, 1);
 	private JButton twoButton = addButton("2", 5, 5, 1, 1);
-	/*private JButton threeButton = addButton("3", 6, 5, 1, 1);
-	private JButton fourButton = addButton("4", 7, 5, 1, 1);*/
+	
+	private JButton newGameButton = addButton("New Game", 7, 5, 1, 1);
+	private JButton saveGameButton = addButton("Save Game", 8, 5, 1, 1);
+	private JButton loadGameButton = addButton("Load Game", 9, 5, 1, 1);
 
 	private JButton northButton = addButton("North", 12, 2, 1, 1);
 	private JButton southButton = addButton("South", 14, 2, 1, 1);
@@ -49,8 +51,6 @@ public class AdventureGameView extends GBFrame {
 	private JButton downButton = addButton("Down", 14, 3, 1, 1);
 
 	private AdventureGameModelFacade model;
-	
-	private boolean dropButtonPressed = false;
 
 	// Constructor-----------------------------------------------
 
@@ -87,49 +87,21 @@ public class AdventureGameView extends GBFrame {
 			model.goWest();
 
 		else if (buttonObj == grabButton) {
-			grab();
+			model.grab();
 		}
 
 		else if (buttonObj == dropButton) {
-			drop();
+			model.drop();
 		}
 
 		else if (buttonObj == oneButton) {
-			if (dropButtonPressed) {
-				model.dropItem(1);
-				dropButtonPressed = false;
-			} else {
-				chooseRoomItem(1);
-			}
+			model.onePressed();
 		}
 
 		else if (buttonObj == twoButton) {
-			if (dropButtonPressed) {
-				model.dropItem(2);
-				dropButtonPressed = false;
-			} else {
-				chooseRoomItem(2);
-			}
+			model.twoPressed();
 		}
 
-		/*else if (buttonObj == threeButton) {
-			if (dropButtonPressed) {
-				model.dropItem(3);
-				dropButtonPressed = false;
-			} else {
-				chooseRoomItem(3);
-			}
-		}
-
-		else if (buttonObj == fourButton) {
-			if (dropButtonPressed) {
-				model.dropItem(3);
-				dropButtonPressed = false;
-			} else {
-				chooseRoomItem(4);
-			}
-		}
-                */
 		displayCurrentInfo();
                 model.setLog("");//refreshes the log after each time a button is clicked
 	}
@@ -142,42 +114,7 @@ public class AdventureGameView extends GBFrame {
 		carryingArea.setText(model.getItems());
                 itemSelectionLog.setText(model.getLog());
 	}
-
-	// Left as an exercise.
-	private void grab() {
-		// Set up a dialog to talk to the model and
-		// determine what items to pick up.
-                //checks to see if there is a item in the room to pick up and asks which one to pick up
-		if (model.grabItem() != null) {
-			//itemSelectionLog.setText(text + "\n");
-			model.itemPresentInRoom = false;
-		} else {
-			model.itemPresentInRoom = true;
-			model.setLog("Press the number of the item to grab: \n");
-		}
-	}
-	
-	private void chooseRoomItem(int item){
-            
-            //picks the room item based off the user's choice
-		if(model.itemPresentInRoom){
-			boolean itemFound = model.choosePickupItem(item);
-			if(itemFound)
-			{
-				model.itemPresentInRoom = false;
-			}
-		}
-	}
-
-	// Left as an exercise.
-	private void drop() {
-            //asks which item the user would like to drop, allows them to drop nothing
-		model.setLog("Press the number of the item to drop: \n");
-  	    dropButtonPressed = true;
-		// Set up a dialog to talk to the model and
-		// determine what items to pick up.
-	}
-        
+   
 	public static void main(String[] args) {
 		JFrame view = new AdventureGameView();
 		view.setSize(950, 600); /* was 400, 250 */
