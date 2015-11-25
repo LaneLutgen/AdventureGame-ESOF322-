@@ -14,9 +14,9 @@ package esof322.a2;
 
 // class Wall
 
+import java.io.Serializable;
 
-
-public class Wall implements CaveSite {
+public class Wall implements CaveSite, Serializable {
 
     //updates the LogTxt to Ouch that hurts if they run into a wall
  public void enter(Player p)

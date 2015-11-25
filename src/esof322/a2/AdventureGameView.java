@@ -111,7 +111,11 @@ public class AdventureGameView extends GBFrame {
 		}
 		
 		else if (buttonObj == loadGameButton) {
-			model.loadGame();
+			try {
+				model.loadGame();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 
 		displayCurrentInfo();

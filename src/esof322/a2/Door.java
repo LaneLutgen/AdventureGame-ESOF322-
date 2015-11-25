@@ -16,10 +16,10 @@ package esof322.a2;
      The main routine is AdventureGame.main
 				    
 **/
-
+import java.io.Serializable;
 // class Door
 
-public class Door implements CaveSite {
+public class Door implements CaveSite, Serializable {
   /** In this implementation doors are always locked.
       A player must have the correct key to get through
       a door.  Doors automatically lock after a player

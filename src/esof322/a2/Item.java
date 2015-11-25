@@ -10,10 +10,10 @@ package esof322.a2;
 				    
 **/
 
-
+import java.io.Serializable;
 // class Item
 // no changes were made
-public class Item {
+public class Item implements Serializable{
 
   private String description;
 

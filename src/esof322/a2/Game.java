@@ -1,6 +1,8 @@
 package esof322.a2;
 
-public class Game {
+import java.io.Serializable;
+
+public class Game implements Serializable{
 	
 	private Room room;
 	private Player player;

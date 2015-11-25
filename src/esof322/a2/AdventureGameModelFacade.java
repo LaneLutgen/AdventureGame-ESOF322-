@@ -4,6 +4,12 @@ package esof322.a2;
 //There is also conditional checking to ensure the program runs correctly
 
 import java.util.HashSet;
+import java.io.Serializable;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.ObjectInputStream;
+import java.io.File;
 
 public class AdventureGameModelFacade {
 
@@ -15,6 +21,7 @@ public class AdventureGameModelFacade {
 	private ILevel theCave;
 	private Room startRm;
 	private Game savedGame;
+	private File saveFile;
 
 	private boolean gameInProgress = false;
 	private boolean dropButtonPressed = false;
@@ -23,6 +30,7 @@ public class AdventureGameModelFacade {
 
 	public AdventureGameModelFacade() {
 		setLog("Welcome to the adventure game! Click on New Game to begin!");
+		saveFile = new File("saved_game.txt");
 	}
 
 	public void newGame() {
@@ -41,13 +49,29 @@ public class AdventureGameModelFacade {
 				setLog("Game saved successfully! The previously saved game has been deleted.");
 			}
 			savedGame = new Game(thePlayer.getLoc(), thePlayer, theCave, thePlayer.getItems());
+			try{
+				saveGameToFile();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 		} else {
 			setLog("Please begin a new game before saving.");
 		}
 	}
+	
+	public void saveGameToFile() throws Exception{
+		saveFile = new File("saved_game.txt");
+		FileOutputStream fos = new FileOutputStream(saveFile);
+		ObjectOutputStream oos = new ObjectOutputStream(fos);
+		oos.writeObject(savedGame);
+	}
 
-	public void loadGame() {
+	public void loadGame() throws Exception{
+		FileInputStream fis = new FileInputStream(saveFile);
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		savedGame = (Game) ois.readObject();
 		if (savedGame != null) {
+			gameInProgress = true;
 			theCave = savedGame.getLevel();
 			thePlayer = savedGame.getPlayer();
 			thePlayer.setLoc(savedGame.getRoom());

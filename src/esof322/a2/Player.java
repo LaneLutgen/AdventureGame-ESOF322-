@@ -12,8 +12,9 @@ package esof322.a2;
 				    
 **/
 
+import java.io.Serializable;
 
-public class Player {
+public class Player implements Serializable{
  
   private String text = " \n";  
     

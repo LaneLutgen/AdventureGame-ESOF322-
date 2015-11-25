@@ -17,10 +17,11 @@ package esof322.a2;
 // no changes were made
 
 import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.ListIterator;
 
 
-public class Room implements CaveSite {
+public class Room implements CaveSite, Serializable {
 
   private String description;
 

@@ -1,5 +1,7 @@
 package esof322.a2;
 
-public interface ILevel {
+import java.io.Serializable;
+
+public interface ILevel extends Serializable {
 	public Room createAdventure();
 }
