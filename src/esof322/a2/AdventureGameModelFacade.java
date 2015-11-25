@@ -14,6 +14,7 @@ public class AdventureGameModelFacade {
 	private Player thePlayer = new Player();
 	private ILevel theCave;
 	private Room startRm;
+	private Game savedGame;
 
 	private boolean gameInProgress = false;
 	private boolean dropButtonPressed = false;
@@ -25,6 +26,7 @@ public class AdventureGameModelFacade {
 	}
 
 	public void newGame() {
+		thePlayer = new Player();
 		setLog("To play Level 1, click on the 1 button! \n" + "To play Level 2, click on the 2 button!");
 		if (gameInProgress) {
 			gameInProgress = false;
@@ -32,11 +34,28 @@ public class AdventureGameModelFacade {
 	}
 
 	public void saveGame() {
-
+		if (gameInProgress) {
+			if (savedGame == null) {
+				setLog("Game saved successfully!");
+			} else {
+				setLog("Game saved successfully! The previously saved game has been deleted.");
+			}
+			savedGame = new Game(thePlayer.getLoc(), thePlayer, theCave, thePlayer.getItems());
+		} else {
+			setLog("Please begin a new game before saving.");
+		}
 	}
 
 	public void loadGame() {
-
+		if (savedGame != null) {
+			theCave = savedGame.getLevel();
+			thePlayer = savedGame.getPlayer();
+			thePlayer.setLoc(savedGame.getRoom());
+			setLog("Previous game loaded succesfully!");
+		}
+		else{
+			setLog("No saved game was found.");
+		}
 	}
 
 	// Calls the methods to send the player in the proper direction
@@ -180,10 +199,9 @@ public class AdventureGameModelFacade {
 	public String getLog() {
 
 		// returns the Log view for the player
-		if(!gameInProgress){
+		if (!gameInProgress) {
 			return "";
-		}
-		else{
+		} else {
 			return thePlayer.getLogTxt();
 		}
 	}

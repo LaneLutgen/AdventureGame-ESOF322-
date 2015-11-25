@@ -48,6 +48,10 @@ public class Player {
        if (myThings[n] == itemToFind) return true;
      return false;
   }
+  
+  public Item[] getItems(){
+	  return myThings;
+  }
 
   public void drop(int itemNum){
    if (itemNum > 0 & itemNum <= itemCount){
