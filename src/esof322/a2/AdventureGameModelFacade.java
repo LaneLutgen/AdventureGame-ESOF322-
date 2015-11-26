@@ -1,6 +1,6 @@
 package esof322.a2;
 
-//This class impliments all the functionality of the game. We added various methods to allow the user to drop items, pick them up, and change the Log view.
+//This class implements all the functionality of the game. We added various methods to allow the user to drop items, pick them up, and change the Log view.
 //There is also conditional checking to ensure the program runs correctly
 
 import java.util.HashSet;
@@ -59,7 +59,7 @@ public class AdventureGameModelFacade {
 		}
 	}
 	
-	public void saveGameToFile() throws Exception{
+	private void saveGameToFile() throws Exception{
 		saveFile = new File("saved_game.txt");
 		FileOutputStream fos = new FileOutputStream(saveFile);
 		ObjectOutputStream oos = new ObjectOutputStream(fos);

@@ -25,14 +25,14 @@ public class Door implements CaveSite, Serializable {
       a door.  Doors automatically lock after a player
       passes through. */
 
-  private Key myKey;
+  protected Key myKey;
 
   /** The door's location. */
-  private CaveSite outSite;
-  private CaveSite inSite;
+  protected CaveSite outSite;
+  protected CaveSite inSite;
 
   /** We can construct a door at the site. */
-  Door(CaveSite out, CaveSite in, Key k){
+  public Door(CaveSite out, CaveSite in, Key k){
     outSite = out;
     inSite = in;
     myKey = k;
