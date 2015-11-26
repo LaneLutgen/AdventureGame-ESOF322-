@@ -25,5 +25,8 @@ public class Item implements Serializable{
 	     return description;
   }
 
+  public boolean isBattery(){
+	  return false;
+  }
 }
 

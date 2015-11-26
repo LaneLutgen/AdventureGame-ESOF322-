@@ -3,8 +3,6 @@ package esof322.a2;
 //This class implements all the functionality of the game. We added various methods to allow the user to drop items, pick them up, and change the Log view.
 //There is also conditional checking to ensure the program runs correctly
 
-import java.util.HashSet;
-import java.io.Serializable;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
@@ -22,10 +20,12 @@ public class AdventureGameModelFacade {
 	private Room startRm;
 	private Game savedGame;
 	private File saveFile;
+	private Flashlight theFlashlight;
 
 	private boolean gameInProgress = false;
 	private boolean dropButtonPressed = false;
 	private boolean newGamePressed = false;
+	private boolean levelOne = false;
 
 	public boolean itemPresentInRoom = false;
 
@@ -33,8 +33,8 @@ public class AdventureGameModelFacade {
 		printWelcomeText();
 		saveFile = new File("saved_game.txt");
 	}
-	
-	private void printWelcomeText(){
+
+	private void printWelcomeText() {
 		setLog("Welcome to the adventure game! Click on New Game to begin!");
 	}
 
@@ -89,27 +89,57 @@ public class AdventureGameModelFacade {
 
 	// Calls the methods to send the player in the proper direction
 	public void goUp() {
-		thePlayer.go(4);
+		if (gameInProgress) {
+			thePlayer.go(4);
+			decreaseFlashlightCharge();
+		}else{
+			gameOver();
+		}
 	}
 
 	public void goDown() {
-		thePlayer.go(5);
+		if (gameInProgress) {
+			thePlayer.go(5);
+			decreaseFlashlightCharge();
+		}else{
+			gameOver();
+		}
 	}
 
 	public void goNorth() {
-		thePlayer.go(0);
+		if (gameInProgress) {
+			thePlayer.go(0);
+			decreaseFlashlightCharge();
+		}else{
+			gameOver();
+		}
 	}
 
 	public void goSouth() {
-		thePlayer.go(1);
+		if (gameInProgress) {
+			thePlayer.go(1);
+			decreaseFlashlightCharge();
+		}else{
+			gameOver();
+		}
 	}
 
 	public void goEast() {
-		thePlayer.go(2);
+		if (gameInProgress) {
+			thePlayer.go(2);
+			decreaseFlashlightCharge();
+		}else{
+			gameOver();
+		}
 	}
 
 	public void goWest() {
-		thePlayer.go(3);
+		if (gameInProgress) {
+			thePlayer.go(3);
+			decreaseFlashlightCharge();
+		}else{
+			gameOver();
+		}
 	}
 
 	public void onePressed() {
@@ -117,7 +147,8 @@ public class AdventureGameModelFacade {
 			printWelcomeText();
 		} else if (!gameInProgress) {
 			theCave = LevelFactory.chooseLevel(0);
-			beginGame();
+			levelOne = false;
+			beginGame(levelOne);
 			gameInProgress = true;
 		} else if (dropButtonPressed) {
 			dropItem(1);
@@ -132,7 +163,8 @@ public class AdventureGameModelFacade {
 			printWelcomeText();
 		} else if (!gameInProgress) {
 			theCave = LevelFactory.chooseLevel(1);
-			beginGame();
+			levelOne = true;
+			beginGame(levelOne);
 			gameInProgress = true;
 		} else if (dropButtonPressed) {
 			dropItem(2);
@@ -153,6 +185,24 @@ public class AdventureGameModelFacade {
 		} else {
 			chooseRoomItem(3);
 		}
+	}
+
+	private void decreaseFlashlightCharge() {
+		if (thePlayer.haveItem(theFlashlight)) {
+			gameInProgress = theFlashlight.decreaseBatteryLife();
+			displayBatteryLife();
+			if(!gameInProgress){
+				gameOver();
+			}
+		}
+	}
+
+	private void displayBatteryLife() {
+		setLog("Flashlight Battery :" + theFlashlight.getBatteryLife() + "%");
+	}
+	
+	private void gameOver(){
+		setLog("GAME OVER, your flashlight has run out of batteries!");
 	}
 
 	private void chooseRoomItem(int item) {
@@ -201,7 +251,13 @@ public class AdventureGameModelFacade {
 
 	public void removeItemFromRoom(Item toRemove) {
 		// takes the item in the room and places in the players inventory
-		thePlayer.pickUp(toRemove);
+		if(toRemove.isBattery()){
+			theFlashlight.addBattery();
+			displayBatteryLife();
+		}
+		else{
+			thePlayer.pickUp(toRemove);
+		}
 		(thePlayer.getLoc()).removeItem(toRemove);
 	}
 
@@ -269,8 +325,13 @@ public class AdventureGameModelFacade {
 		return true;
 	}
 
-	private void beginGame() {
+	private void beginGame(boolean levelOne) {
 		startRm = theCave.createAdventure();
 		thePlayer.setRoom(startRm);
+		if (levelOne) {
+			theFlashlight = (Flashlight) startRm.getFirstItem();
+			thePlayer.pickUp(theFlashlight);// grab flashlight
+			displayBatteryLife();
+		}
 	}
 }

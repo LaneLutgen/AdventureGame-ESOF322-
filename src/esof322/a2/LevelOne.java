@@ -132,7 +132,7 @@ public class LevelOne implements ILevel {
     
  // Create a flashlight and put it in the Start room
     Flashlight theFlashlight = new Flashlight();
-    theFlashlight.setDesc("A red flashlight with battery charge at ");
+    theFlashlight.setDesc("A red flashlight");
     start.addItem(theFlashlight);
     
  // Create 2 batteries and place them in rooms 5 and 11

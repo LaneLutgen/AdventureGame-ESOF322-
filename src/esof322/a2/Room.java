@@ -57,6 +57,10 @@ public class Room implements CaveSite, Serializable {
   public boolean roomEmpty(){
 	 return contents.isEmpty();
   }
+  
+  public Item getFirstItem(){
+	  return getRoomContents()[0];
+  }
 
   public Item[] getRoomContents(){
    Item[] contentsArray = new Item[contents.size()];

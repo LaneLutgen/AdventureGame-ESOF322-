@@ -11,7 +11,7 @@ public class AdventureGameView extends GBFrame {
 	/**
 	 * 
 	 */
-    
+
 	private static final long serialVersionUID = 1L;
 
 	// Window objects --------------------------------------
@@ -33,13 +33,13 @@ public class AdventureGameView extends GBFrame {
 
 	private JButton grabButton = addButton("Grab an item", 12, 5, 1, 1);
 	private JButton dropButton = addButton("Drop an item", 13, 5, 1, 1);
-	
+
 	private JLabel itemSelection = addLabel("Item Selection", 3, 5, 1, 1);
 
 	private JButton oneButton = addButton("1", 4, 5, 1, 1);
 	private JButton twoButton = addButton("2", 5, 5, 1, 1);
 	private JButton threeButton = addButton("3", 6, 5, 1, 1);
-	
+
 	private JButton newGameButton = addButton("New Game", 8, 5, 1, 1);
 	private JButton saveGameButton = addButton("Save Game", 9, 5, 1, 1);
 	private JButton loadGameButton = addButton("Load Game", 10, 5, 1, 1);
@@ -71,9 +71,9 @@ public class AdventureGameView extends GBFrame {
 		if (buttonObj == upButton)
 			model.goUp();
 
-		else if (buttonObj == downButton){
+		else if (buttonObj == downButton) {
 			model.goDown();
-                }
+		}
 
 		else if (buttonObj == northButton)
 			model.goNorth();
@@ -102,19 +102,19 @@ public class AdventureGameView extends GBFrame {
 		else if (buttonObj == twoButton) {
 			model.twoPressed();
 		}
-		
-		else if (buttonObj == threeButton){
+
+		else if (buttonObj == threeButton) {
 			model.threePressed();
 		}
-		
-		else if (buttonObj == newGameButton){
+
+		else if (buttonObj == newGameButton) {
 			model.newGame();
 		}
-		
-		else if (buttonObj == saveGameButton){
+
+		else if (buttonObj == saveGameButton) {
 			model.saveGame();
 		}
-		
+
 		else if (buttonObj == loadGameButton) {
 			try {
 				model.loadGame();
@@ -124,18 +124,20 @@ public class AdventureGameView extends GBFrame {
 		}
 
 		displayCurrentInfo();
-                model.setLog("");//refreshes the log after each time a button is clicked
+		model.setLog("");// refreshes the log after each time a button is
+							// clicked
 	}
 
 	// Private methods-------------------------------------------
 
-	private void displayCurrentInfo() { //Displays all the information through the GUI to the user
-          
+	private void displayCurrentInfo() { // Displays all the information through
+										// the GUI to the user
+
 		viewArea.setText(model.getView());
 		carryingArea.setText(model.getItems());
-        itemSelectionLog.setText(model.getLog());
+		itemSelectionLog.setText(model.getLog());
 	}
-   
+
 	public static void main(String[] args) {
 		JFrame view = new AdventureGameView();
 		view.setSize(950, 600); /* was 400, 250 */

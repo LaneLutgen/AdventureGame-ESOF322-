@@ -12,96 +12,109 @@ package esof322.a2;
 
 import java.io.Serializable;
 
-public class Player implements Serializable{
- 
-  private String text = " \n";  
-  
-  private final int MAXITEMS = 3;
-    
-  private Room myLoc;
+public class Player implements Serializable {
 
-  private Item[] myThings = new Item[MAXITEMS];
+	private String text = " \n";
 
-  private int itemCount = 0;
+	private final int MAXITEMS = 3;
 
-  public void setRoom(Room r){
-   myLoc = r;
-   }
+	private Room myLoc;
 
-  public String look() {
-   return myLoc.getDesc();
-   }
+	private Item[] myThings = new Item[MAXITEMS];
 
-  public void go(int direction){
-     myLoc.exit(direction,this);
-  }
+	private int itemCount = 0;
 
-  public void pickUp(Item i){
-   if (itemCount < MAXITEMS) {
-      myThings[itemCount] = i;
-      itemCount++;
-      myLoc.removeItem(i);
-      }
-  }
+	public void setRoom(Room r) {
+		myLoc = r;
+	}
 
-  public boolean haveItem(Item itemToFind){
-     for (int n = 0; n < itemCount ; n++)
-       if (myThings[n] == itemToFind) return true;
-     return false;
-  }
-  
-  public Item[] getItems(){
-	  return myThings;
-  }
+	public String look() {
+		return myLoc.getDesc();
+	}
 
-  public void drop(int itemNum){
-   if (itemNum > 0 & itemNum <= itemCount){
-      switch(itemNum){
-      case 1: { myLoc.addItem(myThings[0]);
-	        myThings[0]=myThings[1];
-	        myThings[1]=myThings[2];
-	        itemCount--; 
-	        break;
-	      }
-      case 2: { myLoc.addItem(myThings[1]);
-      	myThings[1] = myThings[2];
-		itemCount--;
-		break;
-	      } 
-      case 3: { myLoc.addItem(myThings[2]);
-      	itemCount--;
-      	break;
-      }
-      }
-   }
-   }
+	public void go(int direction) {
+		myLoc.exit(direction, this);
+	}
 
-  public void setLoc(Room r){myLoc = r;}
+	public void pickUp(Item i) {
+		if (itemCount < MAXITEMS) {
+			myThings[itemCount] = i;
+			itemCount++;
+			myLoc.removeItem(i);
+		}
+	}
 
-  public Room getLoc(){return myLoc;}
+	public boolean haveItem(Item itemToFind) {
+		for (int n = 0; n < itemCount; n++)
+			if (myThings[n] == itemToFind)
+				return true;
+		return false;
+	}
 
-  public String showMyThings(){
-   String outString = "";
-   for (int n = 0; n < itemCount ; n++)
-     outString = outString + Integer.toString(n+1) + ": " 
-       + myThings[n].getDesc() + " ";
-   return outString;
-  }
-//Sets the players Log txt for the Log view
- public void setLogTxt(String txt){
-     text = txt; 
- }
-  
- //returns the players log txt for the log view
- public String getLogTxt(){
-     return text; 
- }
- 
-  public boolean handsFull(){return itemCount==MAXITEMS;}
+	public Item[] getItems() {
+		return myThings;
+	}
 
-  public boolean handsEmpty(){return itemCount==0;}
+	public void drop(int itemNum) {
+		if (itemNum > 0 & itemNum <= itemCount) {
+			switch (itemNum) {
+			case 1: {
+				myLoc.addItem(myThings[0]);
+				myThings[0] = myThings[1];
+				myThings[1] = myThings[2];
+				itemCount--;
+				break;
+			}
+			case 2: {
+				myLoc.addItem(myThings[1]);
+				myThings[1] = myThings[2];
+				itemCount--;
+				break;
+			}
+			case 3: {
+				myLoc.addItem(myThings[2]);
+				itemCount--;
+				break;
+			}
+			}
+		}
+	}
 
-  public int numItemsCarried(){return itemCount;}
+	public void setLoc(Room r) {
+		myLoc = r;
+	}
+
+	public Room getLoc() {
+		return myLoc;
+	}
+
+	public String showMyThings() {
+		String outString = "";
+		for (int n = 0; n < itemCount; n++)
+			outString = outString + Integer.toString(n + 1) + ": " + myThings[n].getDesc() + " ";
+		return outString;
+	}
+
+	// Sets the players Log txt for the Log view
+	public void setLogTxt(String txt) {
+		text = txt;
+	}
+
+	// returns the players log txt for the log view
+	public String getLogTxt() {
+		return text;
+	}
+
+	public boolean handsFull() {
+		return itemCount == MAXITEMS;
+	}
+
+	public boolean handsEmpty() {
+		return itemCount == 0;
+	}
+
+	public int numItemsCarried() {
+		return itemCount;
+	}
 
 }
-
