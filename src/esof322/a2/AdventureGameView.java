@@ -38,10 +38,11 @@ public class AdventureGameView extends GBFrame {
 
 	private JButton oneButton = addButton("1", 4, 5, 1, 1);
 	private JButton twoButton = addButton("2", 5, 5, 1, 1);
+	private JButton threeButton = addButton("3", 6, 5, 1, 1);
 	
-	private JButton newGameButton = addButton("New Game", 7, 5, 1, 1);
-	private JButton saveGameButton = addButton("Save Game", 8, 5, 1, 1);
-	private JButton loadGameButton = addButton("Load Game", 9, 5, 1, 1);
+	private JButton newGameButton = addButton("New Game", 8, 5, 1, 1);
+	private JButton saveGameButton = addButton("Save Game", 9, 5, 1, 1);
+	private JButton loadGameButton = addButton("Load Game", 10, 5, 1, 1);
 
 	private JButton northButton = addButton("North", 12, 2, 1, 1);
 	private JButton southButton = addButton("South", 14, 2, 1, 1);
@@ -100,6 +101,10 @@ public class AdventureGameView extends GBFrame {
 
 		else if (buttonObj == twoButton) {
 			model.twoPressed();
+		}
+		
+		else if (buttonObj == threeButton){
+			model.threePressed();
 		}
 		
 		else if (buttonObj == newGameButton){

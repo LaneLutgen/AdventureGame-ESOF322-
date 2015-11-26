@@ -17,6 +17,8 @@ import java.io.Serializable;
 public class Player implements Serializable{
  
   private String text = " \n";  
+  
+  private final int MAXITEMS = 3;
     
   private Room myLoc;
 
@@ -37,7 +39,7 @@ public class Player implements Serializable{
   }
 
   public void pickUp(Item i){
-   if (itemCount < 2) {
+   if (itemCount < MAXITEMS) {
       myThings[itemCount] = i;
       itemCount++;
       myLoc.removeItem(i);
@@ -91,7 +93,7 @@ public class Player implements Serializable{
      return text; 
  }
  
-  public boolean handsFull(){return itemCount==2;}
+  public boolean handsFull(){return itemCount==MAXITEMS;}
 
   public boolean handsEmpty(){return itemCount==0;}
 

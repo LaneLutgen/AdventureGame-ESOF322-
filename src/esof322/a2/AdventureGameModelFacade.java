@@ -133,6 +133,18 @@ public class AdventureGameModelFacade {
 			chooseRoomItem(2);
 		}
 	}
+	
+	public void threePressed() {
+		if (!gameInProgress) {
+			setLog("Level 3 is not available at this time.");
+		}
+		if (dropButtonPressed) {
+			dropItem(3);
+			dropButtonPressed = false;
+		} else {
+			chooseRoomItem(3);
+		}
+	}
 
 	private void chooseRoomItem(int item) {
 
