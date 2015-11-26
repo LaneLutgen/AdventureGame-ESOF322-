@@ -1,5 +1,7 @@
 package esof322.a2;
 
+import java.util.ArrayList;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,10 +11,11 @@ package esof322.a2;
 public class LevelOne implements ILevel {
 
 	private Room entrance;
+	private ArrayList<Room> rooms = new ArrayList<Room>();
 
 	public Room createAdventure(){
    // Starting Room 
-      Room  start = new Room();
+      Room start = new Room();
       start.setDesc("room start");
    
    // Room 1:
@@ -114,21 +117,38 @@ public class LevelOne implements ILevel {
     
  // Room 13
     Room r13 = new Room();
-    r13.setDesc("room 12");
+    r13.setDesc("room 13");
     
     //Connect Room 13 to Room 6
     r6.setSide(2, r13);
     r13.setSide(3, r6);
     
- // Add a portal in Room 13 that takes players to a random room
-    
- // Room exit
+    // Room exit
     Room exit = new Room();
     exit.setDesc("exit");
     
  // Connect Room 12 and Exit
     r12.setSide(4, exit);
     exit.setSide(5, r12);
+    
+ // Add a portal in Room 13 that takes players to a random room
+    rooms.add(start);
+    rooms.add(r1);
+    rooms.add(r2);
+    rooms.add(r3);
+    rooms.add(r4);
+    rooms.add(r5);
+    rooms.add(r6);
+    rooms.add(r7);
+    rooms.add(r8);
+    rooms.add(r9);
+    rooms.add(r10);
+    rooms.add(r11);
+    rooms.add(r12);
+    rooms.add(exit);
+    
+    Portal portal = new Portal(rooms);
+    r13.setSide(0, portal);
     
  // Create a flashlight and put it in the Start room
     Flashlight theFlashlight = new Flashlight();
