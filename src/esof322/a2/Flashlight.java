@@ -12,4 +12,8 @@ public class Flashlight extends Item {
 	public void setDesc(String d){
 		description = d + batteryLife + "%";
 	}
+	
+	public String getDesc(){
+		return description;
+	}
 }

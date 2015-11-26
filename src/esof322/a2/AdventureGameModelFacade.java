@@ -25,17 +25,23 @@ public class AdventureGameModelFacade {
 
 	private boolean gameInProgress = false;
 	private boolean dropButtonPressed = false;
+	private boolean newGamePressed = false;
 
 	public boolean itemPresentInRoom = false;
 
 	public AdventureGameModelFacade() {
-		setLog("Welcome to the adventure game! Click on New Game to begin!");
+		printWelcomeText();
 		saveFile = new File("saved_game.txt");
+	}
+	
+	private void printWelcomeText(){
+		setLog("Welcome to the adventure game! Click on New Game to begin!");
 	}
 
 	public void newGame() {
 		thePlayer = new Player();
 		setLog("To play Level 1, click on the 1 button! \n" + "To play Level 2, click on the 2 button!");
+		newGamePressed = true;
 		if (gameInProgress) {
 			gameInProgress = false;
 		}
@@ -49,24 +55,24 @@ public class AdventureGameModelFacade {
 				setLog("Game saved successfully! The previously saved game has been deleted.");
 			}
 			savedGame = new Game(thePlayer.getLoc(), thePlayer, theCave, thePlayer.getItems());
-			try{
+			try {
 				saveGameToFile();
-			}catch(Exception e){
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} else {
 			setLog("Please begin a new game before saving.");
 		}
 	}
-	
-	private void saveGameToFile() throws Exception{
+
+	private void saveGameToFile() throws Exception {
 		saveFile = new File("saved_game.txt");
 		FileOutputStream fos = new FileOutputStream(saveFile);
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
 		oos.writeObject(savedGame);
 	}
 
-	public void loadGame() throws Exception{
+	public void loadGame() throws Exception {
 		FileInputStream fis = new FileInputStream(saveFile);
 		ObjectInputStream ois = new ObjectInputStream(fis);
 		savedGame = (Game) ois.readObject();
@@ -76,8 +82,7 @@ public class AdventureGameModelFacade {
 			thePlayer = savedGame.getPlayer();
 			thePlayer.setLoc(savedGame.getRoom());
 			setLog("Previous game loaded succesfully!");
-		}
-		else{
+		} else {
 			setLog("No saved game was found.");
 		}
 	}
@@ -108,7 +113,9 @@ public class AdventureGameModelFacade {
 	}
 
 	public void onePressed() {
-		if (!gameInProgress) {
+		if (!newGamePressed) {
+			printWelcomeText();
+		} else if (!gameInProgress) {
 			theCave = LevelFactory.chooseLevel(0);
 			beginGame();
 			gameInProgress = true;
@@ -121,24 +128,26 @@ public class AdventureGameModelFacade {
 	}
 
 	public void twoPressed() {
-		if (!gameInProgress) {
+		if (!newGamePressed) {
+			printWelcomeText();
+		} else if (!gameInProgress) {
 			theCave = LevelFactory.chooseLevel(1);
 			beginGame();
 			gameInProgress = true;
-		}
-		if (dropButtonPressed) {
+		} else if (dropButtonPressed) {
 			dropItem(2);
 			dropButtonPressed = false;
 		} else {
 			chooseRoomItem(2);
 		}
 	}
-	
+
 	public void threePressed() {
-		if (!gameInProgress) {
+		if (!newGamePressed) {
+			printWelcomeText();
+		} else if (!gameInProgress) {
 			setLog("Level 3 is not available at this time.");
-		}
-		if (dropButtonPressed) {
+		} else if (dropButtonPressed) {
 			dropItem(3);
 			dropButtonPressed = false;
 		} else {

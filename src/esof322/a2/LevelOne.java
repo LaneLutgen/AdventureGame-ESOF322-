@@ -154,9 +154,9 @@ public class LevelOne implements ILevel {
     r7.addItem(theKey);
 
  // We add a door between r10 and r11: 
-    RustedDoor theDoor = new RustedDoor(r10,r11,theKey,theOil);
-    r10.setSide(5,theDoor);
-    r11.setSide(4,theDoor);
+    RustedDoor theDoor = new RustedDoor(exit,r12,theKey,theOil);
+    r12.setSide(4,theDoor);
+    exit.setSide(5,theDoor);
 
  // Now return the entrance:
     entrance = start;

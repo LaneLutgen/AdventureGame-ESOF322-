@@ -13,7 +13,7 @@ public class RustedDoor extends Door implements Serializable {
 
 	public void enter(Player p) {
 		if (p.haveItem(myKey) && p.haveItem(oilCan)) {
-			p.setLogTxt("Your key works and you lubricate the door with the oil! The door creaks open, "
+			p.setLogTxt("Your key works and you lubricate the door with the oil! \n The door creaks open, "
 					+ "and slams behind you after you pass through.");
 			if (p.getLoc() == outSite)
 				inSite.enter(p);

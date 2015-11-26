@@ -1,7 +1,5 @@
 package esof322.a2;
 
-//added set and get methods to accomodate the Log view for the player
-
 /**  Adventure Game  Program Code
      Copyright (c) 1999 James M. Bieman
 
@@ -22,7 +20,7 @@ public class Player implements Serializable{
     
   private Room myLoc;
 
-  private Item[] myThings = new Item[2];
+  private Item[] myThings = new Item[MAXITEMS];
 
   private int itemCount = 0;
 
@@ -61,13 +59,19 @@ public class Player implements Serializable{
       switch(itemNum){
       case 1: { myLoc.addItem(myThings[0]);
 	        myThings[0]=myThings[1];
+	        myThings[1]=myThings[2];
 	        itemCount--; 
 	        break;
 	      }
       case 2: { myLoc.addItem(myThings[1]);
+      	myThings[1] = myThings[2];
 		itemCount--;
 		break;
 	      } 
+      case 3: { myLoc.addItem(myThings[2]);
+      	itemCount--;
+      	break;
+      }
       }
    }
    }
