@@ -1,5 +1,7 @@
 package esof322.a2;
-
+/*
+ * @author Lane Lutgen
+ */
 import java.io.Serializable;
 
 public class RustedDoor extends Door implements Serializable {

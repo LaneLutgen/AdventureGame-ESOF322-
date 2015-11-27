@@ -1,5 +1,7 @@
 package esof322.a2;
-
+/*
+ * @author Lane Lutgen
+ */
 //This class impliments the GUI. There is no game functionality within other than a visual representation of what is happening for the user. We added 
 //some buttons and labels for the user's benefit
 import javax.swing.*;

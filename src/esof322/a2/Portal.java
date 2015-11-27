@@ -1,8 +1,11 @@
 package esof322.a2;
-
+/*
+ * @author Lane Lutgen
+ */
 import java.util.*;
+import java.io.Serializable;
 
-public class Portal implements CaveSite{
+public class Portal implements CaveSite, Serializable{
 	
 	private ArrayList<Room> rooms;
 	private Random ran;

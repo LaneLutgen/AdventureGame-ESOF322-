@@ -1,5 +1,7 @@
 package esof322.a2;
-
+/*
+ * @author Lane Lutgen
+ */
 //Added a way to update the players LogTxt for the Log view
 
 /**  Adventure Game  Program Code

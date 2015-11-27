@@ -1,12 +1,10 @@
 package esof322.a2;
 
 import java.util.ArrayList;
-
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * @author Lane Lutgen
  */
+
 
 public class LevelOne implements ILevel {
 
@@ -16,11 +14,14 @@ public class LevelOne implements ILevel {
 	public Room createAdventure(){
    // Starting Room 
       Room start = new Room();
-      start.setDesc("room start");
+      start.setDesc("You just fell into a deep hole and find yourself in a dark cave. \n"
+      		+ "At least you have your flashlight with you! \n"
+    		+ "You see caves leading in all directions.");
    
    // Room 1:
       Room r1 = new Room();
-      r1.setDesc("room 1");
+      r1.setDesc("It's a dead end. You will have to move east back to the Entrance"
+      		+ "");
 
    // Connect the outside to Room 1:
       start.setSide(3,r1);
@@ -29,7 +30,7 @@ public class LevelOne implements ILevel {
 
    // Room 2:
       Room r2 = new Room();
-      r2.setDesc("room 2");
+      r2.setDesc("You see that there is a long tunnel stretching both North and South");
       
    // Connect Room 2 and Start
       start.setSide(0, r2);
@@ -37,7 +38,7 @@ public class LevelOne implements ILevel {
 
   // Room 3:
      Room r3 = new Room();
-     r3.setDesc("room 3");
+     r3.setDesc("You see that there is a long tunnel stretching both East and West");
 
   // Connect Room 3 and Start
      start.setSide(2, r3);
@@ -45,7 +46,8 @@ public class LevelOne implements ILevel {
 
   // Room 4:
      Room r4 = new Room();
-     r4.setDesc("room 4");
+     r4.setDesc("You see that there is a long tunnel stretching North and there is also a small \n"
+     		+ " hole in the ground leading Down.");
      
   // Connect Room 4 and Start 
      start.setSide(1, r4);
@@ -53,7 +55,8 @@ public class LevelOne implements ILevel {
 
   // Room 5:
      Room r5 = new Room();
-     r5.setDesc("room 5");
+     r5.setDesc("It's a dead end! But you should search around and see if there is \n"
+     		+ "anything useful laying around.");
      
   // Connect Room 5 and Start   
      start.setSide(5, r5);
@@ -61,7 +64,7 @@ public class LevelOne implements ILevel {
 
   // Room 6:
      Room r6 = new Room();
-     r6.setDesc("room 6");
+     r6.setDesc("There are tunnels stretching to the North and to the East.");
      
   // Connect Room 6 and Start
      start.setSide(4, r6);
@@ -69,7 +72,8 @@ public class LevelOne implements ILevel {
 
   // Room 7:
      Room r7 = new Room();
-     r7.setDesc("room 7");
+     r7.setDesc("It's a dead end! You should look around to see if you can find anything \n"
+     		+ "useful laying around.");
      
   //Connect Room 4 and Room 7
      r4.setSide(5, r7);
@@ -77,7 +81,8 @@ public class LevelOne implements ILevel {
 
   // Room 8:
      Room r8 = new Room();
-     r8.setDesc("room 8");
+     r8.setDesc("There is a tunnel leading south and there is also a tunnel leading \n"
+     		+ "down. ");
      
   // Connect Room 8 and Room 2
      r2.setSide(0, r8);
@@ -85,7 +90,7 @@ public class LevelOne implements ILevel {
 
   // Room 9:
      Room r9 = new Room();
-     r9.setDesc("room 9");
+     r9.setDesc("There is a tunnel leading west and a tunnel leading down.");
      
   // Connect Room 3 and Room 9
      r3.setSide(2, r9);
@@ -93,7 +98,8 @@ public class LevelOne implements ILevel {
 
   // Room 10:
      Room r10 = new Room();
-     r10.setDesc("room 10");
+     r10.setDesc("It's a dead end! You should check around and see if there is \n"
+     		+ "anything useful laying around.");
      
   // Connect Room 10 and Room 8
      r8.setSide(5, r10);
@@ -101,7 +107,8 @@ public class LevelOne implements ILevel {
 
  // Room 11:
     Room r11 = new Room();
-    r11.setDesc("room 11");
+    r11.setDesc("It's a dead end! You should check around and see if there is \n"
+     		+ "anything useful laying around.");
     
  // Connect Room 11 and Room 9
     r9.setSide(5, r11);
@@ -109,7 +116,7 @@ public class LevelOne implements ILevel {
     
  // Room 12
     Room r12 = new Room();
-    r12.setDesc("room 12");
+    r12.setDesc("There is a door with light shining underneath leading Up! This must be the exit!");
     
  // Connect Room 12 and Room 6
     r6.setSide(0, r12);
@@ -117,7 +124,8 @@ public class LevelOne implements ILevel {
     
  // Room 13
     Room r13 = new Room();
-    r13.setDesc("room 13");
+    r13.setDesc("You enter the room and you find a door towards the North that is making \n"
+    		+ "a strange humming noise. Where could this door possibly lead?");
     
     //Connect Room 13 to Room 6
     r6.setSide(2, r13);
@@ -125,7 +133,7 @@ public class LevelOne implements ILevel {
     
     // Room exit
     Room exit = new Room();
-    exit.setDesc("exit");
+    exit.setDesc("CONGRATULATIONS! You made it out of the cave!");
     
  // Connect Room 12 and Exit
     r12.setSide(4, exit);

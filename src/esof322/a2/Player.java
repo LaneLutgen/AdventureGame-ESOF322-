@@ -9,7 +9,9 @@ package esof322.a2;
      The main routine is AdventureGame.main
 				    
 **/
-
+/*
+ * @author Lane Lutgen
+ */
 import java.io.Serializable;
 
 public class Player implements Serializable {

@@ -1,5 +1,7 @@
 package esof322.a2;
-
+/*
+ * @author Lane Lutgen
+ */
 public class LevelFactory {
 	public static ILevel chooseLevel(int level){
 		switch(level){

@@ -1,5 +1,9 @@
 package esof322.a2;
 
+/*
+ * @author Lane Lutgen
+ */
+
 //This class implements all the functionality of the game. We added various methods to allow the user to drop items, pick them up, and change the Log view.
 //There is also conditional checking to ensure the program runs correctly
 
@@ -35,7 +39,8 @@ public class AdventureGameModelFacade {
 	}
 
 	private void printWelcomeText() {
-		setLog("Welcome to the adventure game! Click on New Game to begin!");
+		setLog("Welcome to the adventure game! Click on New Game to begin! \n"
+				+ "Or, click on Load Game to Load a previous game!");
 	}
 
 	public void newGame() {
@@ -92,6 +97,8 @@ public class AdventureGameModelFacade {
 		if (gameInProgress) {
 			thePlayer.go(4);
 			decreaseFlashlightCharge();
+		}else if(!newGamePressed){
+			printWelcomeText();
 		}else{
 			gameOver();
 		}
@@ -101,7 +108,10 @@ public class AdventureGameModelFacade {
 		if (gameInProgress) {
 			thePlayer.go(5);
 			decreaseFlashlightCharge();
-		}else{
+		}else if(!newGamePressed){
+			printWelcomeText();
+		}
+		else{
 			gameOver();
 		}
 	}
@@ -110,6 +120,8 @@ public class AdventureGameModelFacade {
 		if (gameInProgress) {
 			thePlayer.go(0);
 			decreaseFlashlightCharge();
+		}else if(!newGamePressed){
+			printWelcomeText();
 		}else{
 			gameOver();
 		}
@@ -119,6 +131,8 @@ public class AdventureGameModelFacade {
 		if (gameInProgress) {
 			thePlayer.go(1);
 			decreaseFlashlightCharge();
+		}else if(!newGamePressed){
+			printWelcomeText();
 		}else{
 			gameOver();
 		}
@@ -128,6 +142,8 @@ public class AdventureGameModelFacade {
 		if (gameInProgress) {
 			thePlayer.go(2);
 			decreaseFlashlightCharge();
+		}else if(!newGamePressed){
+			printWelcomeText();
 		}else{
 			gameOver();
 		}
@@ -137,13 +153,15 @@ public class AdventureGameModelFacade {
 		if (gameInProgress) {
 			thePlayer.go(3);
 			decreaseFlashlightCharge();
+		}else if(!newGamePressed){
+			printWelcomeText();
 		}else{
 			gameOver();
 		}
 	}
 
 	public void onePressed() {
-		if (!newGamePressed) {
+		if (!newGamePressed && !gameInProgress) {
 			printWelcomeText();
 		} else if (!gameInProgress) {
 			theCave = LevelFactory.chooseLevel(0);
@@ -159,7 +177,7 @@ public class AdventureGameModelFacade {
 	}
 
 	public void twoPressed() {
-		if (!newGamePressed) {
+		if (!newGamePressed && !gameInProgress) {
 			printWelcomeText();
 		} else if (!gameInProgress) {
 			theCave = LevelFactory.chooseLevel(1);
@@ -175,7 +193,7 @@ public class AdventureGameModelFacade {
 	}
 
 	public void threePressed() {
-		if (!newGamePressed) {
+		if (!newGamePressed && !gameInProgress) {
 			printWelcomeText();
 		} else if (!gameInProgress) {
 			setLog("Level 3 is not available at this time.");

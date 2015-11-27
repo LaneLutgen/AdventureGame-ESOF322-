@@ -1,20 +1,13 @@
 package esof322.a2;
-
+/*
+ * @author Lane Lutgen
+ */
 public class Flashlight extends Item {
 	
 	private int batteryLife;
-	private String description;
 	
 	public Flashlight(){
 		batteryLife = 100;
-	}
-	
-	public void setDesc(String d){
-		description = d;
-	}
-	
-	public String getDesc(){
-		return description;
 	}
 	
 	public boolean decreaseBatteryLife(){
